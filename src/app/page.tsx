@@ -1,66 +1,102 @@
-import Image from "next/image";
+"use client";
+
 import styles from "./page.module.css";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className={styles.wrapper}>
+      {/* ═══ NAV ═══ */}
+      <header className={styles.header}>
+        <span className={styles.logo}>weber</span>
+
+        <nav className={styles.nav}>
+          <a href="#">Features</a>
+          <a href="#">Pricing</a>
+          <a href="#">Blog</a>
+        </nav>
+
+        <div className={styles.navActions}>
+          <a className={styles.btnGhost} href="#">
+            Log in
+          </a>
+          <button className={styles.btnOutline}>Sign Up</button>
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </header>
+
+      {/* ═══ HERO ═══ */}
+      <main className={styles.main}>
+        <div className={styles.badge}>
+          <iconify-icon icon="lucide:gift" />
+          Free credits on signup
+        </div>
+
+        <h1 className={styles.heading}>What should we build?</h1>
+
+        {/* Input card */}
+        <div className={styles.inputCard}>
+          <textarea
+            className={styles.textarea}
+            placeholder="Describe what you need..."
+            rows={4}
+            aria-label="Describe what you want to build"
+          />
+
+          <div className={styles.inputFooter}>
+            <div className={styles.inputActions}>
+              <button className={styles.inputActionBtn} aria-label="Attach file">
+                <iconify-icon icon="lucide:paperclip" />
+                Attach
+              </button>
+              <button
+                className={styles.inputActionBtn}
+                aria-label="Toggle agent mode"
+              >
+                <iconify-icon icon="lucide:sliders-horizontal" />
+                Agent Mode
+              </button>
+            </div>
+
+            <button className={styles.btnGenerate} aria-label="Generate">
+              Generate
+              <iconify-icon icon="lucide:arrow-up" />
+            </button>
+          </div>
+        </div>
+
+        {/* Quick shortcuts */}
+        <div className={styles.shortcuts}>
+          {[
+            { icon: "lucide:image", label: "From Image" },
+            { icon: "lucide:figma", label: "From Figma" },
+            { icon: "lucide:layout-template", label: "Wireframe" },
+            { icon: "lucide:monitor", label: "Landing page" },
+            { icon: "lucide:smartphone", label: "Mobile app" },
+          ].map((s) => (
+            <button key={s.label} className={styles.shortcutChip}>
+              <iconify-icon icon={s.icon} />
+              {s.label}
+            </button>
+          ))}
         </div>
       </main>
+
+      {/* ═══ FOOTER ═══ */}
+      <footer className={styles.footer}>
+        <p className={styles.footerCopy}>
+          © 2025 weber. All rights reserved.
+        </p>
+
+        <div className={styles.footerLinks}>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#" aria-label="Twitter / X">
+            <iconify-icon
+              icon="lucide:twitter"
+              style={{ fontSize: "14px", display: "block" }}
+            />
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
